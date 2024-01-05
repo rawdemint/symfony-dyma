@@ -1,0 +1,28 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Hello UserController!{% endblock %}
+
+{% block body %}
+<style>
+    .example-wrapper { margin: 1em auto; max-width: 800px; width: 95%; font: 18px/1.5 sans-serif; }
+    .example-wrapper code { background: #F5F5F5; padding: 2px 6px; }
+</style>
+
+<div class="example-wrapper">
+    <h1>Page de Profil</h1>
+
+     {% if form is defined %}
+            <div class="separator"></div>
+            <div class="comment-form">
+                
+                {{ form_start(form) }}
+                <div class="block mb-20">
+                    {{ form_rest(form) }}
+                </div>
+                <button class="btn btn-primary">Envoyez votre réponse</button>
+                {{ form_end(form) }}
+            </div>
+        </div>
+        {% endif %}
+</div>
+{% endblock %}

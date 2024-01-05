@@ -1,0 +1,49 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Mon profils!{% endblock %}
+
+{% block body %}
+<div>
+
+    <div class="block mb-20">
+        <h2>Mon Profil</h2>
+
+        {% if form is defined %}
+                <div class="separator"></div>
+                <div class="comment-form">
+                    
+                    {{ form_start(form) }}
+                    <div class="block mb-20">
+                        {{ form_rest(form) }}
+                    </div>
+                    <button class="btn btn-primary">Mettre à jour</button>
+                    {{ form_end(form) }}
+                </div>
+            </div>
+            {% endif %}
+    </div>
+
+    <div class="block mb-20">
+        <h2 class='pb-30'>Mes Questions</h2>
+        <ul>
+        {% for question in app.user.questions %}
+            <li><p class="question-text">{{ question.content | slice(0, 150) }} ...</p></li>
+            <div class="separator"></div>
+        {% endfor %}
+        </ul>
+    </div>
+
+    <div class="block mb-20">
+        <h2 class='pb-30'>Mes Responses</h2>
+        <ul>
+        {% for comment in app.user.comments %}
+            <li><p class="question-text">{{ comment.content | slice(0, 120) }} ... </p></li>
+            <div class="separator"></div>
+        {% endfor %}
+        </ul>
+    </div>
+</div>
+
+
+
+{% endblock %}

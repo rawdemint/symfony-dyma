@@ -1,0 +1,28 @@
+ {% extends "base.html.twig" %}
+
+{% block styleSheets%}
+    {{ parent() }}
+    {{ encore_entry_link_tags('question_show') }}
+{% endblock %}
+
+{% block title %}Inscription{% endblock %} 
+ 
+{% block body %}
+<div class="comment-form">
+    <h3 class="mb-20">Inscription compte</h1>
+    {{ form_start(form) }}
+    <div class="block mb-20">
+    {{ form_rest(form) }}
+    </div>
+    <div class="d-flex flex-row-wrap flex-column-xs align-items-center">
+        <button class="btn btn-primary mr-10">Inscription</button>
+        <small>
+        <a href="{{path('login')}}">Vous avez déjà un compte ?</a>
+    </small>
+    </div>
+    
+   
+    {{ form_end(form) }}
+</div>
+ 
+ {% endblock %}

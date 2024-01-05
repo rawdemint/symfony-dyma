@@ -1,0 +1,54 @@
+ {% extends "base.html.twig" %}
+
+{% block styleSheets %}
+    {{ parent() }}
+    <link rel="stylesheet" href="{{ asset('css/question_show.css') }}">
+{% endblock %}
+
+{% block title %} Connexion {% endblock %} 
+ 
+{% block body %}
+<div class="block">
+    <h3 class="mb-20">Connexion à votre compte</h1>
+    <form action="{{ path('login') }}" method="post">
+        <div class="form-row">
+            <label for="email">Votre login</label>
+            <input type="email" id="email" autofocus name="_username" value {{ username }}> 
+        </div>
+
+        <div class="form-row">
+            <label for="password">Mot de passe</label>
+            <input type="password" id="password" name="_password" > 
+        </div>
+
+        <div class="form-row">
+            <label for="remember_me">
+            <input type="checkbox" id="remember_me" name="remember_me" > 
+                Se souvenir du mot de passe
+            </label>
+        </div>
+        <input type="hidden" name="_csrf_token" value="{{ csrf_token('authenticate')}}">
+
+        {% if error %}
+            <ul class="form_errors">
+                <li>{{error.messageKey | trans(error.messageData, 'security')}}</li>
+            </ul>
+        {% endif %}
+        
+        <input type="hidden" name="_csrf_token" value="{{ csrf_token('authenticate') }}">
+        <div>
+            <button class="btn btn-primary mr-10">Connexion</button>
+        </div>
+        <div class="d-flex flex-column">
+            <small class="mb-20">
+                <a href="{{ path('signup') }}">Vous n'avez pas encore de compte ?</a>
+            </small>
+            <small>
+                <a href="{{ path('reset_password_request') }}">Mot de passe oublié ?</a>
+            </small>
+        </div>
+    </form>
+    
+</div>
+ 
+ {% endblock %}

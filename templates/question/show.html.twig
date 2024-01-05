@@ -1,0 +1,64 @@
+{% extends "base.html.twig" %}
+
+{% block styleSheets %}
+    {{ parent() }}
+    {{ encore_entry_link_tags('question_show') }}
+{% endblock %}
+
+
+{% block title %}{{ question.title }}{% endblock %}
+
+{% block body %}
+    <div class="block">
+        <div class="d-flex flex-row-nowrap align-items-center pb-30">
+            {% include "partials/_rating.html.twig" with {rating: question.rating, from: 'question', id: question.id} %}
+
+            <h1 >{{ question.title }}</h1>
+            <div class="question-tag ml-15">Question</div>
+            <img class="avatar ml-auto" src="{{ question.author.picture }}" alt="">
+        </div>
+        <p class="question-text">{{ question.content }}</p>
+        {% if question.comments is not empty %}
+            <div class="separator"></div>
+        {% endif %}
+        
+    
+
+        {% for comment in question.comments %}
+        <div class="question-response-elem">
+         <h3 class="mb-20">Reponse(s)</h3>
+            <div class="d-flex flex-row-nowrap align-items-center">
+                {% include "partials/_rating.html.twig" with {rating: comment.rating, from: 'comment', id: comment.id} %}
+                <a href="{{path('user', {id:comment.author.id})}}" class="d-flex flex-row align-items-center">
+                <img class="avatar mr-10" src="{{ comment.author.picture}}" alt="">
+                 <img class="avatar mr-10" src="{{ app.user.picture}}" alt="">
+                <p class="mr-5 clickable">{{comment.author.fullname}}</p>
+                </a>
+                
+                <small class="ml-auto">{{comment.createdAt |ago (locale='fr')}}</small>
+            </div>
+            <p class="question-response-text">{{comment.content}}</p>
+        </div>
+        {% endfor %}
+
+        {% if form is defined %}
+            <div class="separator"></div>
+            <div class="comment-form">
+                <h3 class="mb-20">Répondez à la question</h3>
+                {{ form_start(form) }}
+                <div class="block mb-20">
+                    {{ form_rest(form) }}
+                </div>
+                <button class="btn btn-primary">Envoyez votre réponse</button>
+                {{ form_end(form) }}
+            </div>
+        </div>
+        {% endif %}
+    </div>
+
+{% endblock %}
+    
+    
+   
+    
+  

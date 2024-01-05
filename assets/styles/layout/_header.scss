@@ -1,0 +1,50 @@
+/*HEADER*/
+@use '../mixin' as *;
+
+header{box-shadow: var(--box-sahadow);}
+.header-logo{width: 150px;}
+.header-logo img{max-width: 100px;}
+.burger{font-size: var(--font-size-large);}
+
+.header-search{
+    margin: 0 10px;
+    border-radius: var(--border-radius);
+    background-color: var(--gray-light);
+    max-width: 400px;
+    position: relative;
+    @include xs{
+        display: none;
+    }
+}
+
+.header-search input{
+    border: 0;
+    outline: 0;
+    background-color: var(--gray-light);
+    height: 30px;
+}
+
+.menu-xs{
+    a {
+       margin: 10px 15px;
+    }
+    border-bottom: var(--border);
+    box-shadow: var(--box-sahadow);
+}
+
+.header-search-loading{
+    height: 30px;
+}
+
+.header-search-result{
+    position: absolute;
+    top: calc(100% + 10px);
+    left: 0;
+    background-color: #fff;
+    border-radius: var(--border-radius);
+    box-shadow: var(--box-sahadow);
+}
+
+.header-search-result a{
+    padding:10px ;
+}

@@ -1,0 +1,14 @@
+/*MESSAGES FLASH*/
+.flash{
+    padding: 20px;
+    text-align: center;
+    color: white;
+}
+
+.flash-success{
+    background-color: var(--sucess);
+}
+
+.flash-error{
+    background-color: var(--error);
+}

@@ -1,6 +1,6 @@
 <header class="d-flex flex-row-nowrap justify-content-center p-20">
     <div class="content flex-fill d-flex justify-content-between flex-row-nowrap align-items-center">
-        <a href="#" class="header-logo"><img src="{{asset('build/images/LOGO-LDP-4K.png')}}"></a>
+        <a href="{{ path('home')}}" class="header-logo"><img src="{{asset('build/images/LOGO-LDP-4K.png')}}"></a>
         <div  id="search" class="header-search p-10 flex-fill d-flex flex-row align-items-center">
         <i class="fa-solid fa-magnifying-glass mr-10"></i>
             <input @input="updateInput" ref="input" type="text" class="flex-fill">

@@ -15,7 +15,7 @@
 
             <h1 >{{ question.title }}</h1>
             <div class="question-tag ml-15">Question</div>
-            <img class="avatar ml-auto" src="{{ question.author.picture }}" alt="">
+            <img class="avatar ml-auto" src="{{ asset(question.author.picture) }}" alt="">
         </div>
         <p class="question-text">{{ question.content }}</p>
         {% if question.comments is not empty %}
@@ -30,8 +30,8 @@
             <div class="d-flex flex-row-nowrap align-items-center">
                 {% include "partials/_rating.html.twig" with {rating: comment.rating, from: 'comment', id: comment.id} %}
                 <a href="{{path('user', {id:comment.author.id})}}" class="d-flex flex-row align-items-center">
-                <img class="avatar mr-10" src="{{ comment.author.picture}}" alt="">
-                 <img class="avatar mr-10" src="{{ app.user.picture}}" alt="">
+                <img class="avatar mr-10" src="{{ asset(comment.author.picture)}}" alt="">
+                 <img class="avatar mr-10" src="{{ asset(app.user.picture)}}" alt="">
                 <p class="mr-5 clickable">{{comment.author.fullname}}</p>
                 </a>
                 
